@@ -15,7 +15,7 @@ class TwilioController < ApplicationController
       response = Twilio::TwiML::Response.new do |r|
         r.Say 'Entering conference room.', :voice => 'woman'
         r.Dial :action => twilio_conference_ended_url do |d|
-          r.Conference conference_call.code
+          r.Conference conference_call.code, 'waitUrl' => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.electronica'
         end
       end
     else
