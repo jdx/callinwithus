@@ -30,5 +30,6 @@ class TwilioController < ApplicationController
   end
 
   def conference_ended
+    render :nothing => true
   end
 end
