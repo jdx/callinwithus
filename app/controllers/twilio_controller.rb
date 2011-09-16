@@ -37,9 +37,8 @@ class TwilioController < ApplicationController
   end
 
   def conference_ended
-    conference_call = ConferenceCall.find_by_code(params['Digits'])
-    conference_caller = conference_call.conference_callers.where(:phone_number => params['Caller'])
-    conference_caller.duration = DateTime.to_i - conference_caller.created_at.to_i
+    conference_caller = ConferenceCaller.where(:phone_number => params['Caller']).order('created_at').last
+    conference_caller.duration = DateTime.now.to_i - conference_caller.created_at.to_i
     conference_caller.save!
     render :nothing => true
   end
