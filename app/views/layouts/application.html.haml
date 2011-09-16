@@ -12,7 +12,7 @@
     %meta{ :property => 'og:image', :content => 'http://callinwith.us/logo.png' }
     %meta{ :property => 'og:site_name', :content => 'callinwith.us' }
     %meta{ :property => 'og:description', :content => 'Super simple conference calls!' }
-    %meta{ :property => 'fb:app_id', :content => '221962987857233' }
+    %meta{ :property => 'fb:app_id', :content => ENV['FACEBOOK_APP_ID'] }
     :javascript
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-25758557-1']);
