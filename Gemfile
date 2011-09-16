@@ -5,7 +5,7 @@ gem 'rails', '3.1.0'
 gem 'thin'
 gem 'pg'
 
-gem 'exception_notifier'
+gem 'exception_notification'
 
 gem 'twilio-ruby'
 
