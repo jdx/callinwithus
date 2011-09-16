@@ -14,7 +14,9 @@ class TwilioController < ApplicationController
     if conference_call
       response = Twilio::TwiML::Response.new do |r|
         r.Say 'Entering conference room.', :voice => 'woman'
-        r.Conference conference_call.code
+        r.Dial :action => twilio_conference_ended_url do |d|
+          r.Conference conference_call.code
+        end
       end
     else
       response = Twilio::TwiML::Response.new do |r|
@@ -24,5 +26,8 @@ class TwilioController < ApplicationController
     end
 
     return render :text => response.text
+  end
+
+  def conference_ended
   end
 end
