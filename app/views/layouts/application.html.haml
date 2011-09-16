@@ -1,0 +1,10 @@
+!!!
+%html
+  %head
+    %title callinwith.us
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %h1 callinwith.us
+    = yield
