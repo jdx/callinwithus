@@ -1,6 +1,8 @@
 class ConferenceCall < ActiveRecord::Base
   before_create :create_code
 
+  has_many :conference_callers
+
   def to_param
     self.code
   end

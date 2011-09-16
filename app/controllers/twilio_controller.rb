@@ -13,6 +13,13 @@ class TwilioController < ApplicationController
   def call_with_code
     conference_call = ConferenceCall.find_by_code(params['Digits'])
     if conference_call
+      ConferenceCaller.create!(
+        :phone_number => params['Caller'],
+        :country => params['CallerCountry'],
+        :zip => params['CallerZip'],
+        :city => params['CallerCity'],
+        :conference_call => conference_call
+      )
       response = Twilio::TwiML::Response.new do |r|
         r.Say 'Entering conference room.', :voice => 'woman'
         r.Dial :action => twilio_conference_ended_url do |d|
@@ -30,6 +37,10 @@ class TwilioController < ApplicationController
   end
 
   def conference_ended
+    conference_call = ConferenceCall.find_by_code(params['Digits'])
+    conference_caller = conference_call.conference_callers.where(:phone_number => params['Caller'])
+    conference_caller.duration = DateTime.to_i - conference_caller.to_i
+    conference_caller.save!
     render :nothing => true
   end
 end
