@@ -16,6 +16,7 @@ class TwilioController < ApplicationController
       ConferenceCaller.create!(
         :phone_number => params['Caller'],
         :country => params['CallerCountry'],
+        :state => params['CallerState'],
         :zip => params['CallerZip'],
         :city => params['CallerCity'],
         :conference_call => conference_call
