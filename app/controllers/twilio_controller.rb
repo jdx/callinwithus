@@ -2,7 +2,7 @@ class TwilioController < ApplicationController
   def call
     StatsMix.track('Call made', 1, { :state => params['FromState'] })
     response = Twilio::TwiML::Response.new do |r|
-      r.Say 'Welcome to kawlin with us. Please enter your pin number.', :voice => 'woman'
+      r.Say 'Please enter your pin number.', :voice => 'woman'
       r.Gather 'numDigits' => 6, :action => twilio_call_with_code_url
     end
 
