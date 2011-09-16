@@ -9,6 +9,8 @@ gem 'exception_notifier'
 
 gem 'twilio-ruby'
 
+gem 'statsmix'
+
 gem 'haml'
 gem 'jquery-rails'
 
