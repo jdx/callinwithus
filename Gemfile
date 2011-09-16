@@ -5,10 +5,7 @@ gem 'rails', '3.1.0'
 gem 'thin'
 gem 'pg'
 gem 'dalli'
-gem 'fog'
 gem 'km'
-
-gem 'devise'
 
 gem 'haml'
 gem 'jquery-rails'
