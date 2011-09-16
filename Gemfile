@@ -4,8 +4,8 @@ gem 'heroku'
 gem 'rails', '3.1.0'
 gem 'thin'
 gem 'pg'
-gem 'dalli'
-gem 'km'
+
+gem 'twilio-ruby'
 
 gem 'haml'
 gem 'jquery-rails'
@@ -13,10 +13,6 @@ gem 'jquery-rails'
 group :development do
   gem 'sqlite3'
   gem 'rails3-generators'
-end
-
-group :production do
-  gem 'newrelic_rpm'
 end
 
 group :assets do

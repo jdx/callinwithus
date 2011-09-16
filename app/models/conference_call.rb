@@ -8,6 +8,8 @@ class ConferenceCall < ActiveRecord::Base
   private
 
   def create_code
-    self.code = '9823798u'
+    chars = '0123456789'
+    self.code = ''
+    6.times { |i| self.code << chars[rand(chars.length)] }
   end
 end
