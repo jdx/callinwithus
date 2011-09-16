@@ -6,6 +6,13 @@
     = stylesheet_link_tag "http://fonts.googleapis.com/css?family=Rock Salt&subset=latin"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    %meta{ :property => 'og:title', :content => 'callinwith.us' }
+    %meta{ :property => 'og:type', :content => 'website' }
+    %meta{ :property => 'og:url', :content => 'http://callinwith.us/' }
+    %meta{ :property => 'og:image', :content => 'http://callinwith.us/logo.png' }
+    %meta{ :property => 'og:site_name', :content => 'callinwith.us' }
+    %meta{ :property => 'og:description', :content => 'Super simple conference calls!' }
+    %meta{ :property => 'fb:app_id', :content => '221962987857233' }
     :javascript
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-25758557-1']);
