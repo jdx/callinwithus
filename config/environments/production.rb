@@ -57,4 +57,9 @@ Callinwithus::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.middleware.use ExceptionNotifier,
+    :email_prefix => "[callinwithus] [exception] ",
+    :sender_address => %{"callinwith.us" <support@callinwith.us>},
+    :exception_recipients => %w{me@jeffdickey.info}
 end
