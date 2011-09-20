@@ -1,7 +1,7 @@
 class TwilioController < ApplicationController
   def call
     response = Twilio::TwiML::Response.new do |r|
-      r.Say 'Please enter your pin number.', :voice => 'woman'
+      r.Say 'Please enter your pin number.', :voice => 'woman', :language => localized_language(params['CallerCountry'])
       r.Gather :action => twilio_call_with_code_url
     end
 
@@ -21,14 +21,14 @@ class TwilioController < ApplicationController
         :conference_call => conference_call
       )
       response = Twilio::TwiML::Response.new do |r|
-        r.Say 'Entering conference room.', :voice => 'woman'
+        r.Say 'Entering conference room.', :voice => 'woman', :language => localized_language(params['CallerCountry'])
         r.Dial :action => twilio_conference_ended_url do |d|
           r.Conference conference_call.code, 'waitUrl' => 'http://twimlets.com/holdmusic?Bucket=com.twilio.music.electronica'
         end
       end
     else
       response = Twilio::TwiML::Response.new do |r|
-        r.Say 'Invalid pin. Please try again.', :voice => 'woman'
+        r.Say 'Invalid pin. Please try again.', :voice => 'woman', :language => localized_language(params['CallerCountry'])
         r.Redirect twilio_call_url
       end
     end
@@ -46,5 +46,11 @@ class TwilioController < ApplicationController
     conference_call.save!
 
     render :nothing => true
+  end
+
+  private
+
+  def localized_language(country)
+    return country == 'UK' ? 'en-gb' : 'en'
   end
 end
