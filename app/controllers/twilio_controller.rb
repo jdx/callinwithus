@@ -2,7 +2,7 @@ class TwilioController < ApplicationController
   def call
     response = Twilio::TwiML::Response.new do |r|
       r.Say 'Please enter your pin number.', :voice => 'woman'
-      r.Gather 'numDigits' => 6, :action => twilio_call_with_code_url
+      r.Gather :action => twilio_call_with_code_url
     end
 
     return render :text => response.text

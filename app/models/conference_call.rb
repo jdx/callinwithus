@@ -8,12 +8,18 @@ class ConferenceCall < ActiveRecord::Base
     self.code
   end
 
+  def code_for_display
+    split_code = self.code.match(/(\d{3})(\d*)/)
+    return "#{ split_code[1] }-#{ split_code[2] }#"
+  end
+
   private
 
-  def create_code
+  def create_code(digits=5)
     chars = '0123456789'
     self.code = ''
-    6.times { |i| self.code << chars[rand(chars.length)] }
+    digits.times { |i| self.code << chars[rand(chars.length)] }
+    create_code(digits = digits + 1) if ConferenceCall.find_by_code(self.code)
   end
 
   def notify_statsmix
