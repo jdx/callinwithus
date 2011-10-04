@@ -10,6 +10,7 @@ gem 'exception_notification'
 gem 'twilio-ruby'
 
 gem 'statsmix'
+gem 'newrelic_rpm'
 
 gem 'haml'
 gem 'jquery-rails'
