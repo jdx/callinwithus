@@ -1,6 +1,5 @@
 class ConferenceCall < ActiveRecord::Base
   before_create :create_code
-  after_create :notify_statsmix
 
   has_many :conference_callers
 
@@ -20,9 +19,5 @@ class ConferenceCall < ActiveRecord::Base
     self.code = ''
     digits.times { |i| self.code << chars[rand(chars.length)] }
     create_code(digits = digits + 1) if ConferenceCall.find_by_code(self.code)
-  end
-
-  def notify_statsmix
-    StatsMix.track('Total conference calls', ConferenceCall.all.count)
   end
 end
