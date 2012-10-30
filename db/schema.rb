@@ -11,25 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916065628) do
+ActiveRecord::Schema.define(:version => 20121030234049) do
 
   create_table "conference_callers", :force => true do |t|
-    t.string    "phone_number"
-    t.integer   "duration"
-    t.string    "country"
-    t.string    "state"
-    t.string    "zip"
-    t.string    "city"
-    t.integer   "conference_call_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "phone_number"
+    t.integer  "duration"
+    t.string   "country"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "city"
+    t.integer  "conference_call_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "conference_calls", :force => true do |t|
-    t.string    "code"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "duration"
+    t.string   "code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "duration"
   end
+
+  add_index "conference_calls", ["updated_at"], :name => "index_conference_calls_on_updated_at"
 
 end
